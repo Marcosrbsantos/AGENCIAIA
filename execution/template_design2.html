@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;900&display=swap');
+
+body {
+    margin: 0; padding: 0;
+    width: 1080px; height: 1350px;
+    background-color: #ff6a00;
+    background-image: url('file:///C:/Users/Admin/.gemini/antigravity/brain/bb885d9d-17c4-480d-8b96-bc832cb3e051/bg_orange_grunge_1773455396913.png');
+    background-size: cover;
+    background-position: center center;
+    font-family: 'Inter', sans-serif;
+    color: #0d0d0d;
+    position: relative;
+    overflow: hidden;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+    opacity: 0.15;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.header {
+    position: absolute;
+    top: 60px; width: 100%;
+    display: flex; justify-content: center;
+    z-index: 10;
+}
+.logo {
+    color: white; font-weight: 800; font-size: 32px;
+    letter-spacing: 2px;
+}
+
+.title-container {
+    position: absolute;
+    top: 180px; left: 60px; right: 60px;
+    z-index: 10;
+    transform: rotate(-2deg);
+}
+
+.line1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 60px; font-weight: 700;
+    letter-spacing: -2px; margin-bottom: -15px;
+    color: #1a1a1a;
+}
+
+.line2 {
+    display: flex; align-items: baseline; gap: 20px;
+    font-family: 'Anton', sans-serif;
+    line-height: 1;
+}
+.ninguem {
+    font-size: 165px; 
+    letter-spacing: -3px; color: #1a1a1a;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+.compra-tenis {
+    font-size: 110px; color: #ffffff;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+}
+
+.line3 {
+    display: flex; align-items: center; gap: 15px;
+    font-family: 'Anton', sans-serif;
+    margin-top: -10px;
+}
+.preco {
+    font-size: 140px; color: #00ff73;
+    line-height: 0.8;
+}
+.tag-motivo {
+    background-color: #00ff73;
+    color: #1a1a1a;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800; font-size: 38px;
+    padding: 15px 30px;
+    margin-top: 20px;
+    border: 3px solid #1a1a1a;
+    box-shadow: 6px 6px 0px rgba(0,0,0,1);
+}
+
+/* Center Graphic */
+.center-graphic {
+    position: absolute;
+    top: 550px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 500px;
+    z-index: 5;
+}
+
+.duct-tape {
+    position: absolute;
+    top: 60px; left: -20px; width: 1000px; height: 380px;
+    background-color: #151515;
+    transform: rotate(-3deg);
+    /* simulate tape edges */
+    clip-path: polygon(2% 4%, 98% 1%, 100% 95%, 1% 99%, 0% 50%);
+    box-shadow: 0 40px 60px rgba(0,0,0,0.4);
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden;
+}
+.tape-texture {
+    position: absolute; top:0; left:0; right:0; bottom:0;
+    background: linear-gradient(90deg, transparent 50%, rgba(255,255,255,0.03) 50%);
+    background-size: 10px 10px;
+}
+.tape-text {
+    font-family: 'Anton', sans-serif;
+    font-size: 400px; color: #00ff73; opacity: 0.15;
+    line-height: 0.8; letter-spacing: -10px;
+}
+
+.sneaker {
+    position: absolute;
+    top: -50px; left: 50%; width: 750px;
+    transform: translateX(-50%) rotate(5deg);
+    filter: drop-shadow(10px 20px 25px rgba(0,0,0,0.5));
+    border: 12px solid white;
+    box-shadow: 0 0 0 4px #00ff73 inset;
+    border-radius: 20px; /* if it's a square image, we make it look like a sticker cutout */
+    object-fit: contain;
+    background-color: transparent;
+    border-radius: 40px;
+    overflow: hidden;
+    padding: 10px;
+    background: white;
+}
+
+/* Float Box */
+.floating-box {
+    position: absolute;
+    bottom: 230px; right: 60px;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+    font-size: 38px; line-height: 1.3;
+    font-weight: 600;
+    z-index: 20;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+.floating-box strong {
+    font-weight: 900;
+}
+.floating-box .arrow {
+    color: #00ff73; font-weight: 900; margin-left: 10px;
+}
+
+/* Footer paragraph */
+.footer-text {
+    position: absolute;
+    bottom: 30px; left: 60px; right: 60px;
+    font-size: 14px; line-height: 1.4;
+    color: #2a2a2a;
+    font-weight: 600;
+    z-index: 10;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="logo">OMC</div>
+</div>
+
+<div class="title-container">
+    <div class="line1">Ninguém, absolutamente</div>
+    <div class="line2">
+        <span class="ninguem">NINGUÉM</span> 
+        <span class="compra-tenis">COMPRA TÊNIS</span>
+    </div>
+    <div class="line3">
+        <span class="preco">DE R$1.000</span>
+        <div class="tag-motivo">porque eles são melhores.</div>
+    </div>
+</div>
+
+<div class="center-graphic">
+    <div class="duct-tape">
+        <div class="tape-texture"></div>
+        <div class="tape-text">NIKE</div>
+    </div>
+    <img src="file:///C:/Users/Admin/.gemini/antigravity/brain/bb885d9d-17c4-480d-8b96-bc832cb3e051/sneaker_illustration_1773455411457.png" class="sneaker" />
+</div>
+
+<div class="floating-box">
+    A Nike vende porque<br>
+    ela sabe usar <strong>uma arma</strong><br>
+    <strong>que sua marca ignora</strong> <span class="arrow">&rarr;</span>
+</div>
+
+<div class="footer-text">
+    A Nike não vende seus tênis de 10.000 por que eles são muito melhoresVocê pode até achar um absurdo, mas tudo isso é quase uma hipnose feita. 80% das compras feitas são guiadas pela emoção. Esse fato pode até não parecer relevante, porém, para pra pensar, quando você paga por algo, é porque aquilo realmente é bom, ou você colocou valor emocional naquilo? Exemplo: Estou com fome de noite e com preguiça, um lanche vai ser melhor do que uma janta? Se a resposta é sim, você foi guiado pelo SENTIMENTO de fome e preguiça, e gastou dinheiro com algo mesmo tendo outra coisa similar na sua geladeira. Beleza, mas como a nike te hipnotiza para comprar os seus produtos, mesmo custando seu rim? Através DO branding! Branding é uma ferramenta poderosa de construção de marca. E através dessa ferramenta, a nike cria a percepção de valor na sua mente. Ela projeta no inconsciente dos seus compradores os valores que se conectam com eles.
+</div>
+
+</body>
+</html>

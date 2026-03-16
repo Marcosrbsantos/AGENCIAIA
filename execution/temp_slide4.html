@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+body { margin: 0; padding: 0; width: 1080px; height: 1080px; background-color: #111111; font-family: 'Inter', sans-serif; position: relative; overflow: hidden; }
+.light-glow { position: absolute; top: 0; left: 0; width: 1000px; height: 1000px; background: radial-gradient(circle at top left, rgba(252, 163, 17, 0.4) 0%, transparent 70%); z-index: 1; }
+.orange-bar { position: absolute; left: 0; top: 0; width: 20px; height: 100%; background-color: #FCA311; z-index: 2; }
+.content-area { position: absolute; top: 50%; left: 80px; transform: translateY(-50%); z-index: 10; width: 600px; }
+.main-quote { color: #FCA311; font-size: 55px; margin-top: 0; line-height: 1.25; font-weight: 700; letter-spacing: -2px; text-transform: uppercase; }
+.small-white { color: #FDF5E6; font-size: 30px; margin-top: 50px; font-weight: 500; letter-spacing: -1px; }
+.rotated-text { position: absolute; right: -50px; top: -100px; font-size: 32px; font-weight: 800; color: #FDF5E6; transform: rotate(15deg); line-height: 1.2; text-shadow: 0 0 20px rgba(255,255,255,0.4); }
+.arrow-btn { border: 3px solid #FDF5E6; border-radius: 8px; padding: 5px 15px; display: inline-block; margin-top: 40px; font-weight: 900; font-size: 24px; color:#FDF5E6; text-align:center; }
+
+/* Posicao do Render Fotorealista da Mao com Celular */
+.hand-mockup { position: absolute; bottom: -50px; right: -50px; width: 550px; z-index: 10; filter: drop-shadow(-20px 20px 40px rgba(0,0,0,0.8)); }
+
+</style>
+</head>
+<body>
+<div class="light-glow"></div>
+<div class="orange-bar"></div>
+<div class="content-area">
+    <div class="rotated-text">seu tempo<br>não volta, tá?</div>
+    <div class="main-quote">
+        A dura verdade<br>é que você está entregando<br>sua vida de graça.
+    </div>
+    <div class="small-white">
+        assuma o controle. a ferramenta existe para <strong>servir você</strong>,<br>e não o contrário.
+        <br>
+        <div class="arrow-btn">&gt;</div>
+    </div>
+</div>
+
+<!-- A Arte Final 3D do Celular fica grudada no chao/base direita pra dar a sensacao tatil -->
+<img src="file:///C:/Users/Admin/.gemini/antigravity/brain/bb885d9d-17c4-480d-8b96-bc832cb3e051/mockup_hand_transparent.png" class="hand-mockup">
+</body>
+</html>

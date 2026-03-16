@@ -1,0 +1,28 @@
+# Ambiente
+.env
+.venv
+env/
+venv/
+__pycache__/
+*.pyc
+
+# Logs e Temporários
+*.log
+.tmp/
+tmp/
+outputs/
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# Credenciais e Segredos
+token.json
+credentials.json
+.gemini/
+brain/
+
+# IDEs
+.vscode/
+.idea/

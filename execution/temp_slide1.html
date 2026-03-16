@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+body { margin: 0; padding: 0; width: 1080px; height: 1080px; background-color: #FDF5E6; font-family: 'Inter', sans-serif; position: relative; overflow: hidden; }
+.orange-bar { position: absolute; right: 0; top: 0; width: 50px; height: 100%; background-color: #FCA311; z-index: 5; }
+.title-container { position: absolute; top: 120px; left: 100px; width: 950px; z-index: 20; }
+
+/* Redução sutil na fonte e expansão do Tracking para o QUESTIONAMENTO caber com sobras */
+.title { font-size: 85px; font-weight: 900; letter-spacing: -2px; background: linear-gradient(90deg, #1A1A1A 0%, #1A1A1A 30%, #D68311 60%, rgba(214,131,17,0.3) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; line-height: 0.9; text-transform: uppercase; white-space: nowrap; }
+.body-text { font-size: 34px; font-weight: 400; color: #1A1A1A; line-height: 1.35; margin-top: 30px; max-width: 650px; }
+.body-text strong { color: #1A1A1A; font-weight: 800; }
+.sub-text { font-size: 26px; font-weight: 800; color: #D68311; position: absolute; top: 600px; left: 100px; z-index: 20; }
+
+/* Exclusao da Caixa amarela pedida pelo usuario. Agora eh um float limpo de aspas da esquerda */
+.quotes-container { position: absolute; top: 760px; left: 100px; z-index: 50; padding-left: 20px; border-left: 5px solid #FCA311; }
+.small-texts { font-size: 28px; font-weight: 700; color: #E6A755; font-style: italic; line-height: 1.6; display: inline-block; vertical-align: top; text-shadow: 0 0 10px rgba(253,245,230,0.8); }
+
+.statue { position: absolute; bottom: -50px; right: -180px; width: 900px; z-index: 10; filter: drop-shadow(-15px 15px 25px rgba(0,0,0,0.3)); }
+</style>
+</head>
+<body>
+<div class="orange-bar"></div>
+<div class="title-container">
+    <h1 class="title">questionamento</h1>
+    <div class="body-text">
+        Sobre o uso excessivo do celular na atualidade, a pergunta brutal que poucos fazem é: <br><br>
+        estamos controlando a ferramenta ou <strong>sendo controlados</strong> por ela?
+    </div>
+</div>
+<div class="sub-text">Isso vai te ajudar a repensar<br>seu consumo digital</div>
+<div class="quotes-container">
+    <div class="small-texts">
+        "só mais um shorts..."<br>
+        "deixa eu ver os stories rapidinho..."<br>
+        "por que não durmo bem?"
+    </div>
+</div>
+
+<img src="file:///C:/Users/Admin/.gemini/antigravity/brain/bb885d9d-17c4-480d-8b96-bc832cb3e051/statue_thinker_transparent.png" class="statue">
+</body>
+</html>

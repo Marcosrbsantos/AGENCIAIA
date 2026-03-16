@@ -1,0 +1,21 @@
+# Ignorar as pastas nativas inuteis pro Servidor Nuvem (Linux)
+venv/
+.venv/
+__pycache__/
+.git/
+.env
+
+# Ignorar o Playwright Desktop baixado no Windows pra nao estufar o docker
+playwright_browsers/
+
+# Outputs antigos de Imagens IA pra nao gerar uma build bizarra e pesada
+outputs/
+.tmp/
+temp_slide*.html
+*.webp
+*.png
+
+# Arquivos temporarios Windows
+*.log
+.DS_Store
+Thumbs.db

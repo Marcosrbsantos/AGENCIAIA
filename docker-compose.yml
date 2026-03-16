@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  agencia-creata:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: creata-ai-engine
+    # O volume abaixo espelha a pasta de criações dentro do Linux para a sua maquina
+    volumes:
+      - ./outputs:/app/outputs
+    # O .env no mesmo diretorio guardara a API Groq/Gemini em seguranca
+    env_file:
+      - .env
+    # Reinicia o robô pra sempre se ele travar ou o Proxmox reiniciar
+    restart: always
