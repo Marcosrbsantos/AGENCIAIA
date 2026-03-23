@@ -31,5 +31,5 @@ COPY . .
 # Caso queiramos expor a porta da api futuramente 
 EXPOSE 8000
 
-# Por hora se rodar direto, o contêiner fica de pe para comandos.
-CMD ["tail", "-f", "/dev/null"]
+# Inicia a API WebApp automaticamente ao subir o contêiner
+CMD ["python", "execution/api_webapp.py"]

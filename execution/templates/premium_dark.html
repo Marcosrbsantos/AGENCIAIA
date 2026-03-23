@@ -24,7 +24,6 @@
             position: relative; overflow: hidden;
         }
 
-        /* Fundo Dinâmico */
         .glow {
             position: absolute;
             top: -10%; left: -10%;
@@ -124,7 +123,7 @@
     <div class="container">
         <div class="tag-row">
             <div class="tag-line"></div>
-            <div class="tag">Design Intelligence</div>
+            <div class="tag" id="tag-text">Design Intelligence</div>
         </div>
         <div class="title" id="main-title">A Nova Fronteira do Design Visual</div>
         <div class="description" id="main-desc">
@@ -137,9 +136,10 @@
     </div>
 
     <script>
-        function setContent(title, desc) {
+        function setContent(title, desc, tag) {
             document.getElementById('main-title').innerText = title;
             document.getElementById('main-desc').innerText = desc;
+            if(tag) document.getElementById('tag-text').innerText = tag;
         }
     </script>
 </body>

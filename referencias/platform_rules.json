@@ -1,0 +1,20 @@
+{
+  "instagram": {
+    "tom_de_voz": "Inspiracional, Visual, Dinâmico",
+    "foco_copy": "Hooks curtos, Storytelling visual, Uso de emojis estratégico",
+    "ctas_preferidas": ["Salve para ler depois", "Compartilhe nos Stories", "Clique no link da Bio"],
+    "estilo_design": "Moderno, Glassmorphism, Cores Vibrantes"
+  },
+  "linkedin": {
+    "tom_de_voz": "Profissional, Analítico, Educativo",
+    "foco_copy": "Dados, Insights de mercado, Perguntas reflexivas",
+    "ctas_preferidas": ["Concorda com isso?", "Deixe sua opinião nos comentários", "Siga para mais insights"],
+    "estilo_design": "Clean, Corporativo Premium, Infográficos"
+  },
+  "tiktok": {
+    "tom_de_voz": "Energético, Casual, Autêntico",
+    "foco_copy": "Gancho nos primeiros 3 segundos, Linguagem nativa da rede",
+    "ctas_preferidas": ["Assista até o fim", "Link na Bio para mais", "Dueto autorizado"],
+    "estilo_design": "Dinâmico, Texto grande, Elementos de interface nativa"
+  }
+}
