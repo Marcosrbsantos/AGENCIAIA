@@ -181,10 +181,11 @@ export default function Chat() {
 
     } catch (error) {
        console.error(error);
+       const apiUrl = import.meta.env.VITE_API_URL || 'Fallback/Local';
        setMessages((prev) => [...prev, {
          id: 'error-' + Date.now(),
          role: 'assistant',
-         content: "⚠️ Mestre, conexão instável. Verifique o backend.",
+         content: `⚠️ Mestre, conexão instável. Verifique o backend no endereço: ${apiUrl}. Certifique-se que o Railway está online e a variável VITE_API_URL está correta na Vercel.`,
          created_at: new Date().toISOString()
        }]);
     }
