@@ -1,4 +1,4 @@
-import { MessageSquare, Archive, Settings, Plug, LogOut } from 'lucide-react';
+import { MessageSquare, Lightbulb, Settings, Database, LogOut } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 interface SidebarProps {
@@ -11,8 +11,8 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
 
   const navItems = [
     { id: 'chat', icon: MessageSquare, label: 'Chat' },
-    { id: 'vault', icon: Archive, label: 'Vault' },
-    { id: 'integrations', icon: Plug, label: 'API' },
+    { id: 'vault', icon: Lightbulb, label: 'Insights' },
+    { id: 'integrations', icon: Database, label: 'Backup' },
     { id: 'settings', icon: Settings, label: 'Config' },
   ];
 
