@@ -122,8 +122,21 @@ export default function Chat() {
     };
     setMessages(prev => [...prev, tempUserMsg]);
 
+    const getApiUrl = () => {
+      const url = import.meta.env.VITE_API_URL;
+      if (url && url !== 'http://localhost:8000') return url;
+      // Fallback automático para produção se estiver na Vercel
+      if (window.location.hostname.includes('vercel.app')) {
+        return 'https://agenciaia-production.up.railway.app'; // URL padrão do mestre no Railway
+      }
+      return 'http://localhost:8000';
+    };
+
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chat`, {
+      const apiUrl = getApiUrl();
+      console.log(`📡 AGENCIAIA: Conectando a ${apiUrl}...`);
+      
+      const response = await fetch(`${apiUrl}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -135,7 +148,11 @@ export default function Chat() {
         })
       });
 
-      if (!response.ok) throw new Error('Falha na comunicação');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('❌ AGENCIAIA Erro Backend:', response.status, errorData);
+        throw new Error(`Falha na comunicação: ${response.status}`);
+      }
       
       const data = await response.json();
       

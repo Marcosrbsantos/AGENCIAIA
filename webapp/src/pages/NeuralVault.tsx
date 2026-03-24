@@ -16,7 +16,6 @@ interface VaultItem {
 
 export default function NeuralVault() {
   const [items, setItems] = useState<VaultItem[]>([]);
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -80,8 +79,6 @@ export default function NeuralVault() {
               <div
                 key={item.id}
                 className="group relative"
-                onMouseEnter={() => setHoveredItem(item.id)}
-                onMouseLeave={() => setHoveredItem(null)}
               >
                 <div className="glass-card rounded-[2.5rem] overflow-hidden transition-all duration-700 group-hover:border-emerald-500/40 group-hover:bg-emerald-500/[0.02] group-hover:-translate-y-3 shadow-2xl shadow-transparent group-hover:shadow-emerald-500/10 border border-white/5">
                   <div className="p-10">

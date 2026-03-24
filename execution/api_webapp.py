@@ -22,7 +22,11 @@ app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
 # Configurar CORS para permitir o frontend Vite
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Em produção, restringir ao domínio do webapp
+    allow_origins=[
+        "http://localhost:5173",
+        "https://agenciaia-two.vercel.app",
+        "*"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
