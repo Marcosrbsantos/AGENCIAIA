@@ -55,15 +55,15 @@ export default function Settings() {
   const designModes = [
     {
       id: 'anatomia' as const,
-      name: 'Anatomia do Marketing',
-      description: 'Estética vintage com traços escuros',
-      preview: 'bg-gradient-to-br from-gray-900 via-gray-800 to-black',
+      name: 'Preto',
+      description: 'Estética vintage com traços escuros e profundos',
+      preview: 'bg-[#030303]',
     },
     {
       id: 'solar' as const,
-      name: 'Solar Clean - JC Antunes',
-      description: 'Tons claros, laranja e cinza gelo',
-      preview: 'bg-gradient-to-br from-orange-100 via-gray-100 to-gray-300',
+      name: 'Branco',
+      description: 'Tons claros e cinza gelo minimalista',
+      preview: 'bg-white',
     },
   ];
 

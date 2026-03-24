@@ -21,12 +21,15 @@ export default function Chat() {
   const [plataforma, setPlataforma] = useState('Instagram');
   const [objetivo, setObjetivo] = useState('Engajamento');
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [chatHistory, setChatHistory] = useState<any[]>([]);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { user } = useAuth();
 
   useEffect(() => {
     if (user) {
       loadOrCreateChat();
+      loadChatHistory();
     }
   }, [user]);
 
@@ -34,10 +37,35 @@ export default function Chat() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  const loadChatHistory = async () => {
+    const { data } = await supabase
+      .from('chats')
+      .select('*')
+      .eq('user_id', user!.id)
+      .order('created_at', { ascending: false });
+    
+    if (data) setChatHistory(data);
+  };
+
+  const handleNewChat = async () => {
+    setLoading(true);
+    const { data: newChat, error } = await supabase
+      .from('chats')
+      .insert({ user_id: user!.id, title: 'Nova Conversa' })
+      .select()
+      .single();
+
+    if (newChat) {
+      setCurrentChatId(newChat.id);
+      setMessages([]);
+      loadChatHistory();
+    }
+    setLoading(false);
+  };
+
   const loadOrCreateChat = async () => {
-    console.log('🔄 Iniciando loadOrCreateChat para o usuário:', user?.id);
     try {
-      const { data: existingChats, error: selectError } = await supabase
+      const { data: existingChats } = await supabase
         .from('chats')
         .select('id')
         .eq('user_id', user!.id)
@@ -45,28 +73,14 @@ export default function Chat() {
         .limit(1)
         .maybeSingle();
 
-      if (selectError) console.error('❌ Erro ao buscar chat existente:', selectError);
-
       if (existingChats) {
-        console.log('✅ Chat encontrado:', existingChats.id);
         setCurrentChatId(existingChats.id);
         await loadMessages(existingChats.id);
       } else {
-        console.log('➕ Criando novo chat...');
-        const { data: newChat, error: insertError } = await supabase
-          .from('chats')
-          .insert({ user_id: user!.id, title: 'Nova Conversa' })
-          .select()
-          .single();
-
-        if (insertError) console.error('❌ Erro ao criar novo chat:', insertError);
-        if (newChat) {
-          console.log('✅ Novo chat criado:', newChat.id);
-          setCurrentChatId(newChat.id);
-        }
+        await handleNewChat();
       }
     } catch (err) {
-      console.error('🔥 Erro crítico no loadOrCreateChat:', err);
+      console.error('Erro no loadOrCreateChat:', err);
     }
   };
 
@@ -161,8 +175,57 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex-1 flex flex-col h-screen bg-[#030303]">
-      {/* Header */}
+    <div className="flex-1 flex h-screen bg-[#030303] overflow-hidden">
+      {/* Sidebar de Histórico */}
+      {isHistoryOpen && (
+        <div className="w-80 border-r border-white/5 bg-black/40 backdrop-blur-3xl flex flex-col animate-in slide-in-from-left duration-500">
+          <div className="p-6">
+            <button 
+              onClick={handleNewChat}
+              className="w-full py-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-emerald-500/20 transition-all"
+            >
+              <Plus size={16} />
+              Novo Briefing
+            </button>
+          </div>
+
+          <div className="flex-1 overflow-y-auto px-4 space-y-2">
+            <div className="text-[10px] uppercase tracking-widest text-gray-600 font-bold px-4 mb-4">Conversas Recentes</div>
+            {chatHistory.map((chat) => (
+              <button
+                key={chat.id}
+                onClick={() => {
+                  setCurrentChatId(chat.id);
+                  loadMessages(chat.id);
+                }}
+                className={`w-full p-4 rounded-2xl text-left transition-all group relative overflow-hidden ${
+                  currentChatId === chat.id 
+                    ? 'bg-white/[0.05] border border-white/5 text-white' 
+                    : 'text-gray-500 hover:text-gray-300'
+                }`}
+              >
+                <div className="text-xs font-medium truncate pr-4">{chat.title}</div>
+                <div className="text-[9px] text-gray-600 mt-1">{new Date(chat.created_at).toLocaleDateString()}</div>
+                {currentChatId === chat.id && (
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-emerald-500 rounded-r-full shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Main Chat Area */}
+      <div className="flex-1 flex flex-col relative">
+        {/* Toggle History Button */}
+        <button 
+          onClick={() => setIsHistoryOpen(!isHistoryOpen)}
+          className="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-500/10 border border-white/5 flex items-center justify-center text-emerald-500 hover:bg-emerald-500/20 transition-all z-20 backdrop-blur-lg"
+        >
+          <Plus size={14} className={isHistoryOpen ? 'rotate-45' : ''} />
+        </button>
+
+        {/* Header */}
       <div className="backdrop-blur-2xl bg-black/40 border-b border-white/5 px-8 py-5 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-4">
           <div className="relative">
@@ -382,5 +445,7 @@ export default function Chat() {
         </form>
       </div>
     </div>
+  </div>
   );
 }
+

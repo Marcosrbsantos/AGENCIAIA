@@ -71,8 +71,8 @@ export default function NeuralVault() {
         {items.length === 0 ? (
           <div className="text-center py-32 glass-card rounded-3xl border-dashed border-white/5 bg-transparent">
             <Archive size={48} className="text-gray-700 mx-auto mb-6" />
-            <p className="text-gray-400 text-xl font-light mb-2">Cofre Vazio</p>
-            <p className="text-gray-600 text-sm max-w-xs mx-auto">As estratégias geradas no chat aparecerão aqui automaticamente após a validação neural.</p>
+            <p className="text-gray-400 text-xl font-light mb-2">Cofre de Inteligência Vazio</p>
+            <p className="text-gray-600 text-sm max-w-xs mx-auto">Suas idéias e insights validados aparecerão aqui.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -83,54 +83,51 @@ export default function NeuralVault() {
                 onMouseEnter={() => setHoveredItem(item.id)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
-                <div className="glass-card rounded-3xl overflow-hidden transition-all duration-500 group-hover:border-emerald-500/30 group-hover:bg-white/[0.03] group-hover:-translate-y-2">
-                  <div className="aspect-[4/3] bg-black relative overflow-hidden">
-                    <img
-                      src={item.image_url || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop'}
-                      alt={item.topic}
-                      className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                    
-                    <div className="absolute top-4 right-4 flex gap-2">
-                       <div className="px-3 py-1.5 rounded-full backdrop-blur-md bg-black/40 border border-white/10 flex items-center gap-1.5">
-                          <span className="w-1 h-1 rounded-full bg-emerald-500"></span>
-                          <span className="text-[9px] text-white font-bold tracking-widest uppercase">{item.ctr}% CTR</span>
-                       </div>
-                    </div>
-
-                    {hoveredItem === item.id && (
-                      <div className="absolute inset-0 bg-emerald-950/20 backdrop-blur-[2px] flex items-center justify-center gap-4 transition-all animate-in fade-in zoom-in duration-300">
-                        <button
-                          onClick={() => handleCopy(item.copy_content)}
-                          className="w-14 h-14 rounded-2xl glass-button bg-white/10 hover:bg-emerald-500/20 hover:border-emerald-500/40 flex items-center justify-center transition-all group/btn"
-                          title="Copiar Inteligência"
-                        >
-                          <Copy size={20} className="text-white group-hover/btn:text-emerald-400 group-hover/btn:scale-110 transition-all" />
-                        </button>
+                <div className="glass-card rounded-[2.5rem] overflow-hidden transition-all duration-700 group-hover:border-emerald-500/40 group-hover:bg-emerald-500/[0.02] group-hover:-translate-y-3 shadow-2xl shadow-transparent group-hover:shadow-emerald-500/10 border border-white/5">
+                  <div className="p-10">
+                    <div className="flex items-center justify-between mb-8">
+                      <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+                        <span className="text-[10px] text-emerald-500/80 uppercase tracking-[0.2em] font-black">Insight Validado</span>
                       </div>
-                    )}
-                  </div>
-
-                  <div className="p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                       <span className="text-[9px] text-gray-500 uppercase tracking-widest font-black border-l border-emerald-500 pl-2">Creative Asset</span>
-                       <span className="text-[9px] text-gray-700">{new Date(item.created_at).toLocaleDateString()}</span>
+                      <span className="text-[10px] text-gray-700 font-serif italic">{new Date(item.created_at).toLocaleDateString()}</span>
                     </div>
-                    <h3 className="text-white text-xl font-light mb-6 line-clamp-2 leading-snug group-hover:text-emerald-400 transition-colors">{item.topic}</h3>
+
+                    <h3 className="text-white text-2xl font-light mb-8 leading-tight tracking-tight group-hover:text-emerald-400 transition-colors duration-500">
+                      {item.topic}
+                    </h3>
+
+                    <div className="relative group/content mb-8">
+                        <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 text-gray-400 text-sm font-serif italic line-clamp-4 group-hover:text-gray-300 transition-colors">
+                            "{item.copy_content || 'Nenhum conteúdo de copy gerado para este insight'}"
+                        </div>
+                    </div>
                     
-                    <div className="flex items-center justify-between pt-6 border-t border-white/5">
-                        <div className="flex gap-6">
+                    <div className="flex items-center justify-between pt-8 border-t border-white/5">
+                        <div className="flex gap-8">
                             <div className="flex flex-col">
-                                <span className="text-[8px] text-gray-500 uppercase tracking-tighter mb-1">Likes</span>
-                                <span className="text-white text-xs font-bold">{item.likes}</span>
+                                <span className="text-[9px] text-gray-600 uppercase tracking-widest mb-1.5">Eficiência</span>
+                                <span className="text-emerald-400 text-sm font-light tracking-widest">{item.ctr}% <span className="text-[10px] text-gray-600">CTR</span></span>
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-[8px] text-gray-500 uppercase tracking-tighter mb-1">Saves</span>
-                                <span className="text-white text-xs font-bold">{item.saves}</span>
+                                <span className="text-[9px] text-gray-600 uppercase tracking-widest mb-1.5">Interação</span>
+                                <div className="flex items-center gap-3">
+                                    <span className="text-white text-xs font-bold">{item.likes} <span className="text-[8px] text-gray-700 uppercase">Luvs</span></span>
+                                </div>
                             </div>
                         </div>
-                        <Download size={16} className="text-gray-500 cursor-pointer hover:text-emerald-400 transition-colors" />
+                        
+                        <div className="flex gap-3">
+                             <button
+                                onClick={() => handleCopy(item.copy_content)}
+                                className="p-3 rounded-xl bg-white/5 border border-white/5 text-gray-500 hover:text-emerald-400 hover:border-emerald-500/30 transition-all"
+                             >
+                                <Copy size={16} />
+                             </button>
+                             <button className="p-3 rounded-xl bg-white/5 border border-white/5 text-gray-500 hover:text-emerald-400 hover:border-emerald-500/30 transition-all">
+                                <Download size={16} />
+                             </button>
+                        </div>
                     </div>
                   </div>
                 </div>
