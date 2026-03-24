@@ -7,15 +7,17 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-GROQ_KEY = os.getenv("GROQ_API_KEY")
 PERFORMANCE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.tmp', 'performance_log.json')
 PLATFORM_RULES_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'referencias', 'platform_rules.json')
 MODELOS_PREFERIDOS_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.tmp', 'modelos_preferidos.json')
 
 class AgenteEstrategistaV10:
     def __init__(self):
-        self.api_key = GROQ_KEY
-        self.client = AsyncGroq(api_key=self.api_key)
+        # Ler a chave diretamente aqui para garantir que variáveis de ambiente do Railway sejam capturadas
+        self.api_key = os.environ.get("GROQ_API_KEY")
+        if not self.api_key:
+            print("❌ ERRO CRÍTICO: GROQ_API_KEY não encontrada nas variáveis de ambiente do Railway!")
+        self.client = AsyncGroq(api_key=self.api_key or "vazio")
         self.regras_plataforma = self.carregar_json(PLATFORM_RULES_PATH)
 
     def carregar_json(self, path):
